@@ -1,0 +1,117 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #0d0d0d;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* HEADER */
+.header {
+    padding: 20px 40px;
+}
+
+/* ОСНОВА */
+.buy {
+    padding: 60px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.buy h1 {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+/* КОНТЕЙНЕР */
+.container {
+    display: flex;
+    gap: 60px;
+}
+
+/* ФОРМА */
+.form {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+}
+
+.form h2 {
+    margin: 20px 0 10px;
+}
+
+.form input,
+.form select {
+    margin-bottom: 15px;
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    background: #1a1a1a;
+    color: white;
+}
+
+/* КНОПКА */
+button {
+    margin-top: 20px;
+    padding: 15px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(45deg, #00ff88, #00ccff);
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.85;
+}
+
+/* ПРАВАЯ ЧАСТЬ */
+.summary {
+    flex: 1;
+    background: #161616;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+/* ТОВАР */
+.product {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.product img {
+    width: 100px;
+    border-radius: 10px;
+}
+
+/* ИТОГО */
+.total {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* АДАПТИВ */
+@media (max-width: 900px) {
+    .container {
+        flex-direction: column;
+    }
+}
+
+#card-element {
+    background: #1a1a1a;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}

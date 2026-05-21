@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 48" width="180" height="48">
+  <defs>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="1.5" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <!-- Shield icon -->
+  <path d="M8 6 L24 4 L40 6 L40 22 Q40 34 24 42 Q8 34 8 22 Z" fill="none" stroke="#00ff88" stroke-width="1.5" filter="url(#glow)"/>
+  <path d="M16 18 L22 24 L32 14" fill="none" stroke="#00ff88" stroke-width="2" stroke-linecap="round"/>
+  <!-- Text ARMED -->
+  <text x="48" y="20" font-family="Oswald,sans-serif" font-size="16" font-weight="700" fill="#ffffff" letter-spacing="3">ARMED</text>
+  <!-- Text FORCES -->
+  <text x="48" y="38" font-family="Oswald,sans-serif" font-size="14" font-weight="400" fill="#00ff88" letter-spacing="4">FORCES</text>
+  <!-- Decorative line -->
+  <line x1="48" y1="24" x2="172" y2="24" stroke="#1e2d35" stroke-width="0.5"/>
+</svg>

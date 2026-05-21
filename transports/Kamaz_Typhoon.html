@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kamaz Typhoon | ARMED FORCES</title>
+  <link rel="icon" type="image/svg+xml" href="../img/favicon.svg">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600;700&family=Rajdhani:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/transports.css" />
+</head>
+<body>
+
+<div class="fixed-decor">ARMED FORCES · CLASSIFIED · МРАП</div>
+
+<!-- ══ NAVBAR ══ -->
+<nav class="navbar navbar-expand-lg">
+  <div class="container">
+    <a class="navbar-brand" href="../index.html">
+      <img src="../img/logo.svg" alt="ARMED FORCES" class="navbar-logo-img">
+    </a>
+    <button class="navbar-toggler border-0" type="button"
+            data-bs-toggle="collapse" data-bs-target="#navMain">
+      <i class="bi bi-list fs-2" style="color:var(--green)"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navMain">
+      <ul class="navbar-nav ms-auto gap-lg-3">
+        <li class="nav-item"><a class="nav-link" href="../index.html">Главная</a></li>
+        <li class="nav-item"><a class="nav-link active" href="../header_/katalog.html">Каталог</a></li>
+        <li class="nav-item"><a class="nav-link" href="../header_/about.html">О нас</a></li>
+        <li class="nav-item"><a class="nav-link" href="../header_/kontakt.html">Контакты</a></li>
+        <ul id="navAuthArea" class="navbar-nav"></ul>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- ══ BREADCRUMB ══ -->
+<div class="tp-breadcrumb">
+  <div class="container">
+    <a href="../index.html"><i class="bi bi-house"></i> ГЛАВНАЯ</a>
+    <span class="sep">/</span>
+    <a href="../header_/katalog.html">КАТАЛОГ</a>
+    <span class="sep">/</span>
+    <span class="current">КамАЗ Тайфун</span>
+  </div>
+</div>
+
+<!-- ══ HERO ══ -->
+<section class="tp-hero">
+  <div class="container tp-hero-inner fade-up">
+    <div class="tp-hero-tag">// МРАП · БРОНЕАВТОМОБИЛЬ</div>
+    <h1 class="tp-hero-title">КамАЗ Тайфун</h1>
+    <div style="display:flex;align-items:center;flex-wrap:wrap;gap:.8rem">
+      <span class="tp-hero-price">$1,500,000</span>
+      <span class="tp-hero-status"><i class="bi bi-circle-fill" style="font-size:.5rem"></i>В НАЛИЧИИ</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PRODUCT ══ -->
+<section class="tp-product">
+  <div class="container">
+    <div class="tp-grid">
+
+      <!-- Галерея -->
+      <div class="tp-gallery fade-up delay-1">
+        <div class="tp-main-wrap">
+          <img id="mainImage" src="../A_T/Kamaz_Typhoon.jpg" alt="КамАЗ Тайфун" />
+          <div class="tp-img-id">// CLASSIFIED · ID: KMZ-63968-2011-RU</div>
+        </div>
+        <div class="tp-thumbs">
+          <img src="../A_T/Kamaz_Typhoon.jpg" alt="" class="active" onclick="changeImage(this)">
+          <img src="../transports/transports_img/Kamaz Typhoon-2.jpg" alt="" onclick="changeImage(this)">
+          <img src="../transports/transports_img/Kamaz Typhoon-3.webp" alt="" onclick="changeImage(this)">
+        </div>
+      </div>
+
+      <!-- Инфо -->
+      <div class="tp-info fade-up delay-2">
+        <div class="tp-sec-label">// МРАП · БРОНЕАВТОМОБИЛЬ</div>
+        <h2 class="tp-name">КамАЗ Тайфун</h2>
+
+        <div class="tp-price-block">
+          <span class="tp-price-num">$1,500,000</span>
+          <span class="tp-avail"><i class="bi bi-circle-fill me-1" style="font-size:.45rem"></i>В НАЛИЧИИ</span>
+        </div>
+
+        <!-- Характеристики -->
+        <div class="tp-specs">
+          <div class="tp-spec">
+            <span class="tp-spec-label">ГОД ВЫПУСКА</span>
+            <span class="tp-spec-val">2011</span>
+          </div>
+          <div class="tp-spec">
+            <span class="tp-spec-label">КЛАСС</span>
+            <span class="tp-spec-val">Бронеавтомобиль MRAP</span>
+          </div>
+          <div class="tp-spec">
+            <span class="tp-spec-label">ТРАНСМИССИЯ</span>
+            <span class="tp-spec-val">Автомат</span>
+          </div>
+          <div class="tp-spec">
+            <span class="tp-spec-label">ТОПЛИВО</span>
+            <span class="tp-spec-val">Дизель ЯМЗ</span>
+          </div>
+        </div>
+
+        <!-- Кнопки -->
+        <a href="../buy.html" class="tp-buy-btn">
+          <i class="bi bi-cart3"></i>
+          ПРИОБРЕСТИ · $1,500,000
+        </a>
+        <a href="../index.html#contact" class="tp-contact-btn">
+          <i class="bi bi-headset"></i>
+          СВЯЗАТЬСЯ С БРОКЕРОМ
+        </a>
+
+        <!-- NDA -->
+        <div class="tp-nda">
+          <i class="bi bi-shield-lock-fill"></i>
+          СДЕЛКА СОПРОВОЖДАЕТСЯ NDA · ПОЛНАЯ КОНФИДЕНЦИАЛЬНОСТЬ
+        </div>
+      </div>
+
+    </div><!-- /tp-grid -->
+  </div><!-- /container -->
+</section>
+
+<!-- ══ DESCRIPTION ══ -->
+<section class="tp-desc">
+  <div class="container fade-up">
+    <div class="sec-label">// тактическое досье</div>
+    <h2 class="sec-title">Описание</h2>
+    <div class="tp-desc-body">
+      <p>КамАЗ-63968 «Тайфун-К» — это не просто грузовик, а высокозащищённый бронеавтомобиль класса MRAP, представляющий собой настоящую крепость на колёсах для безопасной перевозки десанта в зонах активных конфликтов. Под его капотом скрывается тяговитый турбодизель ЯМЗ-5367 мощностью 450 л.с., который в связке с автоматической трансмиссией позволяет 25-тонной махине уверенно идти по бездорожью. Защита здесь доведена до абсолюта: комбинированная керамическая броня и пулестойкие стёкла выдерживают обстрел бронебойно-зажигательными пулями калибра 14,5 мм, а V-образное днище спасает людей при подрыве 8 кг тротила под любым колесом. В качестве «зубов» на крыше устанавливается дистанционно управляемый боевой модуль с пулемётом «Корд».</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ BOTTOM BAR ══ -->
+<div class="tp-footer-bar">
+  <div class="container">
+    <a href="../header_/katalog.html" class="tp-back-link">
+      <i class="bi bi-arrow-left"></i> НАЗАД В КАТАЛОГ
+    </a>
+    <div class="tp-share">
+      ПОДЕЛИТЬСЯ:
+      <span class="tp-share-icon"><i class="bi bi-telegram"></i></span>
+      <span class="tp-share-icon"><i class="bi bi-whatsapp"></i></span>
+      <span class="tp-share-icon"><i class="bi bi-link-45deg"></i></span>
+    </div>
+  </div>
+</div>
+
+<!-- ══ FOOTER ══ -->
+<footer class="tp-site-footer">
+  <span class="footer-brand">ARMED<span> FORCES</span></span>
+  &nbsp;·&nbsp;
+  <a href="../index.html">Главная</a> ·
+  <a href="../header_/katalog.html">Каталог</a> ·
+  <span style="color:var(--border)">CLASSIFIED · 2024</span>
+</footer>
+
+<!-- ══ SCRIPTS ══ -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.10.2/sql-wasm.js"></script>
+<script src="../JS/auth.js"></script>
+<script src="../JS/transports.js"></script>
+
+</body>
+</html>

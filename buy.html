@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Оформление покупки</title>
+    <link rel="stylesheet" href="css/buy.css">
+</head>
+<body>
+
+<header class="header">
+    <a href="header_/katalog.html">← Назад в каталог</a>
+</header>
+
+<section class="buy">
+
+    <h1>Оформление покупки</h1>
+
+    <div class="container">
+
+        <!-- ЛЕВАЯ ЧАСТЬ (форма) -->
+        <div class="form">
+
+            <h2>Ваши данные</h2>
+
+            <input type="text" placeholder="ФИО">
+            <input type="text" placeholder="ID">
+            <input type="email" placeholder="Email">
+            <input type="tel" placeholder="Телефон">
+
+            <h2>Доставка</h2>
+
+            <input type="text" placeholder="Страна">
+            <input type="text" placeholder="Город">
+            <input type="text" placeholder="Адрес">
+
+        </div>
+
+        <!-- ПРАВАЯ ЧАСТЬ (товар) -->
+        <div class="summary">
+
+            <h2>Ваш товар</h2>
+
+            <div class="product">
+                <img src="A_T/Kamaz_Typhoon.jpg">
+                <div>
+                    <h3>Kamaz Typhoon</h3>
+                    <p>$1,500,000</p>
+                </div>
+            </div>
+
+            <div class="total">
+                <p>Итого:</p>
+                <h3>$1,500,000</h3>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="https://js.stripe.com/v3/"></script>
+
+<div class="card-payment">
+    <h2>Оплата картой</h2>
+
+    <div id="card-element"></div>
+
+    <button id="payBtn">Оплатить</button>
+
+    <p id="payment-status"></p>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.10.2/sql-wasm.js"></script>
+<script src="JS/auth.js"></script>
+<script src="JS/payment.js"></script>
+
+</section>
+
+</body>
+</html>

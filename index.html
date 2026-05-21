@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ARMED FORCES — Военный транспорт</title>
+  <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
+  <link rel="shortcut icon" href="img/favicon.svg">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600;700&family=Rajdhani:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Russo+One&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="fixed-decor">ARMED FORCES · CLASSIFIED · 2024</div>
+<nav class="navbar navbar-expand-lg">
+  <div class="container">
+    <a class="navbar-brand" href="index.html" title="ARMED FORCES — Главная страница">
+      <img src="img/logo.svg" alt="ARMED FORCES логотип" title="ARMED FORCES" class="navbar-logo-img">
+    </a>
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMain">
+      <i class="bi bi-list fs-2" style="color:var(--green)"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navMain">
+      <ul class="navbar-nav ms-auto gap-lg-3">
+        <li class="nav-item"><a class="nav-link active" href="index.html">Главная</a></li>
+        <li class="nav-item"><a class="nav-link" href="header_/katalog.html">Каталог</a></li>
+        <li class="nav-item"><a class="nav-link" href="header_/about.html">О нас</a></li>
+        <li class="nav-item"><a class="nav-link" href="header_/kontakt.html">Контакты</a></li>
+        <ul id="navAuthArea" class="navbar-nav"></ul>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<section id="home">
+  <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" style="background:var(--green)"></button>
+      <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" style="background:var(--green)"></button>
+      <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" style="background:var(--green)"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="img/Boeing C-17 Globemaster III.jpg" alt="Boeing C-17 Globemaster III — стратегический военно-транспортный самолёт" title="Boeing C-17 Globemaster III">
+        <div class="hero-overlay fade-up">
+          <div class="hero-tag" style="font-family: 'Roboto', sans-serif;">// CLASSIFIED MARKET //</div>
+          <h1 class="hero-title" style="font-family: 'Russo One', sans-serif; text-transform: uppercase; letter-spacing: 2px;">Военный транспорт<br>на любой бюджет</h1>
+          <p class="hero-sub" style="font-family: 'Roboto', sans-serif; font-weight: 400;">Продажа на чёрном рынке · Конфиденциально</p>
+          <div class="d-flex gap-3 mt-4 justify-content-center flex-wrap">
+            <a href="header_/katalog.html" class="btn btn-mil" style="font-family: 'Russo One', sans-serif;">Перейти в каталог</a>
+            <a href="#contact" class="btn btn-mil btn-mil-red" style="font-family: 'Russo One', sans-serif;">Связаться</a>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="A_T/F_A-18F.webp" alt="F/A-18F Super Hornet — многоцелевой истребитель-бомбардировщик" title="F/A-18F Super Hornet · $75,000,000">
+        <div class="hero-overlay fade-up">
+          <div class="hero-tag">// АВИАЦИЯ //</div>
+          <h1 class="hero-title">F/A-18F<br>Super Hornet</h1>
+          <p class="hero-sub">Реактивный истребитель · $75,000,000</p>
+          <a href="transports/F_A-18.html" class="btn btn-mil mt-4">Подробнее</a>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="A_T/Kamaz_Typhoon.jpg" alt="Камаз Тайфун — российский бронеавтомобиль класса МРАП" title="Kamaz Typhoon · $1,500,000">
+        <div class="hero-overlay fade-up">
+          <div class="hero-tag">// БРОНЕТЕХНИКА //</div>
+          <h1 class="hero-title">Камаз Тайфун<br>Защищённый МРАП</h1>
+          <p class="hero-sub">$1,500,000 · Автомат</p>
+          <a href="transports/Kamaz_Typhoon.html" class="btn btn-mil mt-4">Подробнее</a>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span></button>
+    <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next"><span class="carousel-control-next-icon"></span></button>
+  </div>
+</section>
+
+<section id="catalog" class="py-5">
+  <div class="container py-4">
+    <div class="mb-5 fade-up">
+      <div class="sec-label">// популярные модели</div>
+      <h2 class="sec-title">Топ предложения</h2>
+    </div>
+    <div class="row g-4">
+      <div class="col-sm-6 col-lg-4 fade-up delay-1">
+        <a href="transports/T-34.html"><div class="mil-card">
+          <div class="card-img-wrap">
+            <img src="A_T/T-34.jpg" alt="Танк T-34, классика советского бронетанкового производства" title="T-34 — легендарный советский танк (1940 г.) · $250,000">
+            <div class="img-overlay">
+              <i class="bi bi-eye img-overlay-icon"></i>
+              <span class="img-overlay-text">Подробнее</span>
+            </div>
+          </div>
+          <div class="card-body">
+            <h5 style="color:#fff">T-34</h5>
+            <div class="card-price">$250,000</div>
+            <div class="card-detail"><span>1940</span><span>Дизель</span><span>Механика</span></div>
+            <button class="btn btn-mil w-100">Подробнее</button>
+          </div>
+        </div></a>
+      </div>
+      <div class="col-sm-6 col-lg-4 fade-up delay-2">
+        <a href="transports/Kamaz_Typhoon.html"><div class="mil-card">
+          <div class="card-img-wrap">
+            <img src="A_T/Kamaz_Typhoon.jpg" alt="Бронеавтомобиль Камаз Тайфун МРАП" title="Kamaz Typhoon — защищённый МРАП (2011 г.) · $1,500,000">
+            <span class="tag-badge">ТОП</span>
+            <div class="img-overlay">
+              <i class="bi bi-eye img-overlay-icon"></i>
+              <span class="img-overlay-text">Подробнее</span>
+            </div>
+          </div>
+          <div class="card-body">
+            <h5 style="color:#fff">Kamaz Typhoon</h5>
+            <div class="card-price">$1,500,000</div>
+            <div class="card-detail"><span>2011</span><span>Бензин</span><span>Автомат</span></div>
+            <button class="btn btn-mil w-100">Подробнее</button>
+          </div>
+        </div></a>
+      </div>
+      <div class="col-sm-6 col-lg-4 fade-up delay-3">
+        <a href="transports/F_A-18.html"><div class="mil-card">
+          <div class="card-img-wrap">
+            <img src="A_T/F_A-18F.webp" alt="Истребитель F/A-18F Super Hornet военно-морская авиация США" title="F/A-18F Super Hornet — реактивный истребитель (1995 г.) · $75,000,000">
+            <span class="tag-badge">ТОП</span>
+            <div class="img-overlay">
+              <i class="bi bi-eye img-overlay-icon"></i>
+              <span class="img-overlay-text">Подробнее</span>
+            </div>
+          </div>
+          <div class="card-body">
+            <h5 style="color:#fff">F/A-18F Super Hornet</h5>
+            <div class="card-price">$75,000,000</div>
+            <div class="card-detail"><span>1995</span><span>Реактивный</span><span>Керосин</span></div>
+            <button class="btn btn-mil w-100">Подробнее</button>
+          </div>
+        </div></a>
+      </div>
+    </div>
+    <div class="text-center mt-5 fade-up"><a href="header_/katalog.html" class="btn btn-mil px-5">Весь каталог →</a></div>
+  </div>
+</section>
+
+<section id="prices" class="py-5" style="background:var(--dark2)">
+  <div class="container py-4">
+    <div class="mb-5 fade-up"><div class="sec-label">// прайс-лист</div><h2 class="sec-title">Цены на технику</h2></div>
+    <div class="table-responsive fade-up delay-1">
+      <table class="table table-hover table-bordered table-mil">
+        <thead>
+          <tr><th>Модель</th><th>Категория</th><th>Год</th><th>Цена</th><th>Наличие</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><i class="bi bi-shield-fill me-2" style="color:var(--green)"></i>T-34</td><td>Бронетехника</td><td>1940</td><td class="card-price">$250,000</td><td><span class="status-avail">● В НАЛИЧИИ</span></td></tr>
+          <tr><td><i class="bi bi-truck me-2" style="color:var(--green)"></i>Kamaz Typhoon</td><td>МРАП</td><td>2011</td><td class="card-price">$1,500,000</td><td><span class="status-avail">● В НАЛИЧИИ</span></td></tr>
+          <tr><td><i class="bi bi-airplane me-2" style="color:var(--green)"></i>F/A-18F</td><td>Истребитель</td><td>1995</td><td class="card-price">$75,000,000</td><td><span class="status-limit">● ОГРАНИЧЕНО</span></td></tr>
+          <tr><td><i class="bi bi-airplane me-2" style="color:var(--green)"></i>C-130 Hercules</td><td>Транспортный</td><td>1999</td><td class="card-price">$70,000,000</td><td><span class="status-avail">● В НАЛИЧИИ</span></td></tr>
+          <tr><td><i class="bi bi-wind me-2" style="color:var(--green)"></i>К-52</td><td>Вертолёт</td><td>1997</td><td class="card-price">$20,000,000</td><td><span class="status-limit">● ОГРАНИЧЕНО</span></td></tr>
+          <tr style="background:#0d1a10"><td colspan="3"><strong style="color:var(--green)">Пакет "Полный арсенал"</strong></td><td class="card-price">По запросу</td><td><span class="status-avail">● СПЕЦЗАКАЗ</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="media" class="py-5" style="background:var(--dark)">
+  <div class="container py-4">
+    <div class="mb-5 fade-up"><div class="sec-label">// медиаконтент</div><h2 class="sec-title">Обзоры и карты</h2></div>
+    <div class="row g-4">
+      <div class="col-lg-6 fade-up delay-1">
+        <p class="sec-label mb-2">// видеообзор техники</p>
+        <div class="video-box">
+          <video controls poster="img/Boeing C-17 Globemaster III.jpg">
+            <source src="videos/fly.mp4" type="video/mp4">
+            Ваш браузер не поддерживает видео.
+          </video>
+        </div>
+      </div>
+      <div class="col-lg-6 fade-up delay-2">
+        <p class="sec-label mb-2">// карта поставок</p>
+        <div class="video-box">
+          <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=40.0,35.0,80.0,55.0&layer=mapnik" title="Карта поставок" allowfullscreen loading="lazy"></iframe>
+        </div>
+      </div>
+    </div>
+    <div class="mt-4 fade-up delay-3">
+      <p class="sec-label mb-2">// аудиобрифинг</p>
+      <audio controls style="width:100%;">
+        <source src="audios/Plane_taking.mp3" type="audio/mpeg">
+      </audio>
+    </div>
+  </div>
+</section>
+
+<section id="faq" class="py-5" style="background:var(--dark2)">
+  <div class="container py-4">
+    <div class="mb-5 fade-up"><div class="sec-label">// вопросы и ответы</div><h2 class="sec-title">FAQ</h2></div>
+    <div class="row justify-content-center">
+      <div class="col-lg-8 fade-up delay-1">
+        <div class="accordion" id="faqAcc">
+          <div class="accordion-item">
+            <h2 class="accordion-header"><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">Как происходит покупка техники?</button></h2>
+            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAcc"><div class="accordion-body">Свяжитесь с нами через форму или мессенджер. Обсуждаем условия, подписываем NDA, производим оплату через безопасные каналы. Доставка организуется индивидуально.</div></div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">Возможна ли доставка в любую страну?</button></h2>
+            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAcc"><div class="accordion-body">Да, организуем логистику глобально. Маршруты прокладываются в обход международных ограничений через нейтральные юрисдикции.</div></div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">Какие гарантии на технику?</button></h2>
+            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAcc"><div class="accordion-body">Вся техника проходит технический осмотр. Предоставляем полный пакет документации, актуальные спецификации и историю обслуживания.</div></div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">Принимаете криптовалюту?</button></h2>
+            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAcc"><div class="accordion-body">Да. Принимаем BTC, ETH, Monero. Возможны расчёты через офшорные счета в нейтральных юрисдикциях.</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="py-5" style="background:var(--dark)">
+  <div class="container py-4">
+    <div class="row justify-content-center">
+      <div class="col-lg-7 fade-up">
+        <div class="sec-label">// связь с нами</div>
+        <h2 class="sec-title mb-4">Оставить заявку</h2>
+        <form id="contactForm" novalidate>
+          <div class="mb-3">
+            <label class="form-label req" for="fname">Ваше имя / позывной</label>
+            <input type="text" id="fname" class="form-control" placeholder="Ivan Drago" required minlength="2">
+            <div class="invalid-feedback">Введите имя (минимум 2 символа).</div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label req" for="femail">Email</label>
+            <input type="email" id="femail" class="form-control" placeholder="agent@darknet.mil" required>
+            <div class="invalid-feedback">Введите корректный email.</div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label" for="fphone">Телефон / защищённый канал</label>
+            <input type="tel" id="fphone" class="form-control" placeholder="+996 555 000 000" pattern="[\+]?[0-9\s\-\(\)]{10,15}">
+            <div class="invalid-feedback">Введите корректный номер.</div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label req" for="ftype">Интересующая категория</label>
+            <select id="ftype" class="form-select" required>
+              <option value="">— выбрать —</option>
+              <option>Бронетехника</option>
+              <option>Авиация</option>
+              <option>Морской транспорт</option>
+              <option>Ракетные системы</option>
+              <option>Вертолёты</option>
+              <option>Спецпакет</option>
+            </select>
+            <div class="invalid-feedback">Выберите категорию.</div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Бюджет</label>
+            <div class="d-flex gap-4 flex-wrap">
+              <div class="form-check"><input class="form-check-input" type="radio" name="budget" id="bud1" checked><label class="form-check-label" for="bud1">до $1M</label></div>
+              <div class="form-check"><input class="form-check-input" type="radio" name="budget" id="bud2"><label class="form-check-label" for="bud2">$1M–$50M</label></div>
+              <div class="form-check"><input class="form-check-input" type="radio" name="budget" id="bud3"><label class="form-check-label" for="bud3">$50M+</label></div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Дополнительно</label>
+            <div class="form-check"><input class="form-check-input" type="checkbox" id="chk1"><label class="form-check-label" for="chk1">Требуется NDA</label></div>
+            <div class="form-check"><input class="form-check-input" type="checkbox" id="chk2"><label class="form-check-label" for="chk2">Нужна организация доставки</label></div>
+            <div class="form-check"><input class="form-check-input" type="checkbox" id="chk3"><label class="form-check-label" for="chk3">Оплата в криптовалюте</label></div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label" for="fmsg">Комментарий / детали заказа</label>
+            <textarea id="fmsg" class="form-control" rows="4" placeholder="Опишите ваш запрос..."></textarea>
+          </div>
+          <div class="mb-4 form-check">
+            <input class="form-check-input" type="checkbox" id="fAgree" required>
+            <label class="form-check-label" for="fAgree" style="color:var(--muted)">Я соглашаюсь с условиями конфиденциальности</label>
+            <div class="invalid-feedback">Необходимо согласие.</div>
+          </div>
+          <div class="d-flex gap-3 flex-wrap">
+            <button type="submit" class="btn btn-mil px-4"><i class="bi bi-send me-2"></i>Отправить заявку</button>
+            <button type="reset" class="btn btn-mil btn-mil-red px-4"><i class="bi bi-x-circle me-2"></i>Сбросить</button>
+          </div>
+          <div id="formOk" class="mt-3 d-none p-3" style="border:1px solid var(--green);color:var(--green);font-family:'Oswald',sans-serif;letter-spacing:1px;">
+            <i class="bi bi-check-circle me-2"></i>ЗАЯВКА ПРИНЯТА. С ВАМИ СВЯЖУТСЯ.
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CANVAS RADAR ══ -->
+<section id="radarSection" class="py-5">
+  <div class="container py-4">
+    <div class="mb-5 fade-up">
+      <div class="sec-label">// canvas — боевой радар</div>
+      <h2 class="sec-title">Радар отслеживания</h2>
+      <p style="color:var(--muted);max-width:540px">Система мониторинга поставок в реальном времени. Точки — активные маршруты доставки техники.</p>
+    </div>
+    <div class="text-center fade-up delay-1">
+      <canvas id="radarCanvas" width="400" height="400" title="Интерактивный радар отслеживания поставок ARMED FORCES" aria-label="Анимированный радар с отметками целей"></canvas>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TESTIMONIALS ══ -->
+<section id="testimonials" class="py-5">
+  <div class="container py-4">
+    <div class="mb-5 fade-up">
+      <div class="sec-label">// отзывы клиентов</div>
+      <h2 class="sec-title">Рекомендации</h2>
+      <p style="color:var(--muted);max-width:560px">Проверенные покупатели. Конфиденциальность соблюдена. Личные данные изменены по запросу клиентов.</p>
+    </div>
+    <div class="row g-4">
+      <!-- Review 1 -->
+      <div class="col-md-6 col-lg-4 fade-up delay-1">
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">«Сотрудничаем уже третий год. Kamaz Typhoon пришёл в идеальном состоянии, документация полная. Логистика была организована быстрее, чем обещали. Рекомендую как надёжного партнёра.»</p>
+          <div class="review-author">
+            <div class="review-avatar-placeholder">V.K.</div>
+            <div>
+              <div class="review-name">Viktor K.</div>
+              <div class="review-role">Частная охранная компания, ОАЭ</div>
+            </div>
+            <span class="review-badge">ВЕРИФИЦИРОВАН</span>
+          </div>
+        </div>
+      </div>
+      <!-- Review 2 -->
+      <div class="col-md-6 col-lg-4 fade-up delay-2">
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">«F/A-18F был доставлен через нейтральный транзитный узел за 6 недель. Сопровождение сделки — профессионально на каждом этапе. NDA соблюдено строго. Планируем расширить заказ.»</p>
+          <div class="review-author">
+            <div class="review-avatar-placeholder">A.M.</div>
+            <div>
+              <div class="review-name">A. Morales</div>
+              <div class="review-role">Аэрокосмический брокер, Колумбия</div>
+            </div>
+            <span class="review-badge">ВЕРИФИЦИРОВАН</span>
+          </div>
+        </div>
+      </div>
+      <!-- Review 3 -->
+      <div class="col-md-6 col-lg-4 fade-up delay-3">
+        <div class="review-card">
+          <div class="review-stars">★★★★☆</div>
+          <p class="review-text">«Приобрели T-34 для музейной экспозиции. Техника в ходовом состоянии, реставрация минимальная. Единственное пожелание — чуть быстрее процедура верификации. В остальном — отличная работа.»</p>
+          <div class="review-author">
+            <div class="review-avatar-placeholder">D.S.</div>
+            <div>
+              <div class="review-name">D. Schneider</div>
+              <div class="review-role">Военно-исторический музей, Австрия</div>
+            </div>
+            <span class="review-badge">ВЕРИФИЦИРОВАН</span>
+          </div>
+        </div>
+      </div>
+      <!-- Review 4 -->
+      <div class="col-md-6 col-lg-4 fade-up delay-1">
+        <div class="review-card">
+          <div class="review-stars">★★☆☆☆</div>
+          <p class="review-text">«Заказали Boeing B-52 Stratofortress с нормальной доставкой, а вы нам подсунули какого-то бородатого араба! Этот придурок улыбнулся, заорал «Аллах акбар» и 11 сентября влетел как бешеный прямо в башни-близнецы, в 80-й этаж, самка собаки!
+Всё моментально вспыхнуло, башни красиво обвалились, а наш клиент вместе с тысячами людей отправился в вечный отпуск под грудой обломков. Поздравляю, уроды!
+Доставка — просто полный кошмар и издевательство! Молниеносная, точная до тошноты! Мы обычный самолёт хотели, а вы нам мировую трагедию подарили, бездари тупоголовые!
+Теперь Boeing все ненавидят, клиент мёртв, мы без денег, без работы и в полном дерьме сидим.
+Никому эту отвратительную гадость не советую! Особенно с арабской доставкой. Идите вы все лесом со своими услугами, больше никогда к вам не подойду!»</p>
+          <div class="review-author">
+            <div class="review-avatar-placeholder">S.P.</div>
+            <div>
+              <div class="review-name">S. Praimnath</div>
+              <div class="review-role">Башни-близнецы, Нью-Йорк</div>
+            </div>
+            <span class="review-badge">ВЕРИФИЦИРОВАН</span>
+          </div>
+        </div>
+      </div>
+      <!-- Review 5 -->
+      <div class="col-md-6 col-lg-4 fade-up delay-2">
+        <div class="review-card">
+          <div class="review-stars">★☆☆☆☆</div>
+          <p class="review-text">«Здравствуйте!
+Вчера заказали ваш ЯРС PC-24 с доставкой по воздуху. Думали, что будет как обычно, коробка приедет, а тут такое... Прилетел прямо на наш офис! Всё здание в хлам, стёкла вылетели, стены рухнули.
+Самое страшное — нашего шефа прямо на рабочем месте стёрло с лица земли, даже следов не осталось. Бухгалтерия тоже пострадала, два человека в больнице.
+Зачем так делать???
+Доставка очень быстрая, но точность ужасная. Теперь сидим без офиса, без начальника и без компьютеров.
+Никому не советую ваш ЯРС PC-24. Деньги верните пожалуйста.»</p>
+          <div class="review-author">
+            <div class="review-avatar-placeholder">H.U.</div>
+            <div>
+              <div class="review-name">H. Uchikura</div>
+              <div class="review-role">Японская Авиалиния, Хиросима</div>
+            </div>
+            <span class="review-badge">ВЕРИФИЦИРОВАН</span>
+          </div>
+        </div>
+      </div>
+      <!-- Review 6 -->
+      <div class="col-md-6 col-lg-4 fade-up delay-3">
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">«Обращался за консультацией по ракетным системам. Подробный брифинг, детальные технические материалы. Профессионализм на высочайшем уровне. ARMED FORCES — единственный вариант для серьёзных игроков.»</p>
+          <div class="review-author">
+            <div class="review-avatar-placeholder">X.O.</div>
+            <div>
+              <div class="review-name">X. Okonkwo</div>
+              <div class="review-role">Стратегический аналитик, Нигерия</div>
+            </div>
+            <span class="review-badge">ВЕРИФИЦИРОВАН</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Overall rating bar -->
+    <div class="mt-5 p-4 fade-up" style="border:1px solid var(--border);background:var(--panel);border-radius:4px;max-width:500px;margin-left:auto;margin-right:auto;text-align:center;">
+      <div class="sec-label mb-2">// общая оценка</div>
+      <div style="font-family:'Oswald',sans-serif;font-size:3.5rem;color:var(--green);line-height:1;">4.9</div>
+      <div style="color:#00ff88;font-size:1.3rem;letter-spacing:4px;">★★★★★</div>
+      <div style="color:var(--muted);font-size:.85rem;margin-top:.4rem;">На основе 128 верифицированных сделок · 2019–2024</div>
+    </div>
+  </div>
+</section>
+
+<footer class="py-5">
+  <div class="container">
+    <div class="row g-5">
+      <div class="col-md-4">
+        <div class="footer-brand">ARMED<span> FORCES</span></div>
+        <p class="mt-3" style="font-size:.9rem;">Теневой рынок военного транспорта. Конфиденциальность гарантирована.</p>
+        <div class="d-flex gap-2 mt-3">
+          <a href="https://t.me/No_00000" target="_blank" class="social-link"><i class="bi bi-telegram"></i></a>
+          <a href="https://www.instagram.com/_mahmut0v_/" target="_blank" class="social-link"><i class="bi bi-instagram"></i></a>
+          <a href="https://wa.me/996555000819" target="_blank" class="social-link"><i class="bi bi-whatsapp"></i></a>
+        </div>
+        <div class="mt-3 spin-decor"><i class="bi bi-gear-wide-connected fs-3"></i></div>
+      </div>
+      <div class="col-md-4">
+        <div class="footer-heading">// Карта сайта</div>
+        <ul class="sitemap">
+          <li><a href="index.html">Главная</a></li>
+          <li><a href="header_/katalog.html">Каталог техники</a></li>
+          <li><a href="header_/about.html">О компании</a></li>
+          <li><a href="header_/kontakt.html">Контакты</a></li>
+          <li><a href="#testimonials">Рекомендации</a></li>
+          <li><a href="#prices">Прайс-лист</a></li>
+          <li><a href="#media">Медиа</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#contact">Оставить заявку</a></li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <div class="footer-heading">// Контакты</div>
+        <ul class="sitemap">
+          <li>Токмок, Кыргызстан</li>
+          <li><a href="tel:+996555000819">+996 555 000 819</a></li>
+          <li><a href="mailto:makhmutov_a@iuca.kg">makhmutov_a@iuca.kg</a></li>
+          <li>Режим: 00:00 – 24:00</li>
+        </ul>
+      </div>
+    </div>
+    <hr style="border-color:var(--border);margin-top:3rem">
+    <p class="text-center mb-0" style="font-size:.8rem;color:var(--muted)">&copy; 2024 ARMED FORCES · <a href="#home" style="color:var(--green)">↑ Наверх</a></p>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.10.2/sql-wasm.js"></script>
+<script src="JS/auth.js"></script>
+<script src="JS/index.js">
+</script>
+</body>
+</html>

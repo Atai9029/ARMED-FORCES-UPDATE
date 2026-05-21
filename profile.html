@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ARMED FORCES — Личное дело</title>
+  <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600;700&family=Rajdhani:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/auth.css" />
+  <style>
+    /* ── Loading skeleton ── */
+    .skel {
+      background: linear-gradient(90deg, var(--border) 25%, #253540 50%, var(--border) 75%);
+      background-size: 200% 100%;
+      animation: skelShimmer 1.4s infinite;
+      border-radius: 2px;
+      display: inline-block;
+    }
+    @keyframes skelShimmer {
+      0%   { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+
+    /* ── Аватар ── */
+    .profile-avatar {
+      width: 84px; height: 84px;
+      background: var(--panel);
+      border: 2px solid var(--green);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Oswald', sans-serif;
+      font-size: 2.2rem; color: var(--green);
+      flex-shrink: 0; position: relative;
+      clip-path: polygon(14px 0,100% 0,100% calc(100% - 14px),
+        calc(100% - 14px) 100%,0 100%,0 14px);
+      transition: box-shadow .3s;
+    }
+    .profile-avatar:hover {
+      box-shadow: 0 0 20px rgba(0,255,136,.35);
+    }
+
+    /* ── Hero ── */
+    .profile-hero {
+      background: var(--dark2);
+      border-bottom: 1px solid var(--border);
+      padding: 2.4rem 0;
+      position: relative; overflow: hidden;
+    }
+    .profile-hero::after {
+      content: '';
+      position: absolute; left: 0; right: 0; height: 5%;
+      background: linear-gradient(transparent, rgba(0,255,136,.04), transparent);
+      animation: scanline 5s linear infinite; top: -5%;
+      pointer-events: none;
+    }
+
+    /* ── Tabbed info блок ── */
+    .profile-tabs {
+      display: flex;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 1.8rem;
+      gap: 0;
+    }
+    .profile-tab {
+      background: none; border: none; color: var(--muted);
+      font-family: 'Oswald', sans-serif; font-size: .8rem;
+      letter-spacing: 2px; text-transform: uppercase;
+      padding: .65rem 1.4rem; cursor: pointer;
+      border-bottom: 2px solid transparent; margin-bottom: -1px;
+      transition: color .2s;
+    }
+    .profile-tab.active { color: var(--green); border-bottom-color: var(--green); }
+    .profile-tab:hover:not(.active) { color: var(--text); }
+
+    .profile-pane { display: none; }
+    .profile-pane.active { display: block; }
+
+    /* ── DB Таблица ── */
+    .db-table { border: 1px solid var(--border); overflow: hidden; }
+    .db-thead {
+      background: var(--border);
+      display: grid; grid-template-columns: 1.2fr 1fr 1.4fr .9fr;
+      padding: .6rem 1rem;
+      font-family: 'Oswald', sans-serif; font-size: .7rem;
+      letter-spacing: 2px; color: var(--green);
+    }
+    .db-tbody { max-height: 320px; overflow-y: auto; }
+    .db-row {
+      display: grid; grid-template-columns: 1.2fr 1fr 1.4fr .9fr;
+      padding: .6rem 1rem;
+      border-bottom: 1px solid var(--border);
+      transition: background .15s;
+      font-size: .88rem; align-items: center;
+    }
+    .db-row:hover { background: rgba(255,255,255,.03); }
+    .db-row.is-me { background: rgba(0,255,136,.05); }
+    .db-row.is-me:hover { background: rgba(0,255,136,.08); }
+    .db-row:last-child { border-bottom: none; }
+
+    /* ── Доступ ── */
+    .access-item {
+      display: flex; align-items: center; gap: .7rem;
+      padding: .65rem .8rem; border: 1px solid var(--border);
+      margin-bottom: .4rem; transition: border-color .2s;
+    }
+    .access-item.open { border-color: rgba(0,255,136,.25); }
+    .access-item.open:hover { border-color: var(--green); }
+    .access-item.locked { opacity: .45; }
+    .access-item .ai-icon {
+      font-size: 1rem; width: 20px; text-align: center; flex-shrink: 0;
+    }
+    .access-item .ai-label {
+      font-family: 'Oswald', sans-serif; font-size: .8rem;
+      letter-spacing: 1.5px; color: var(--text);
+    }
+    .access-item .ai-badge {
+      margin-left: auto; font-family: 'Oswald', sans-serif;
+      font-size: .62rem; letter-spacing: 2px;
+    }
+
+    /* ── Info line ── */
+    .info-row {
+      display: flex; gap: 1rem; padding: .75rem 0;
+      border-bottom: 1px solid var(--border);
+      align-items: center; flex-wrap: wrap;
+    }
+    .info-row:last-child { border-bottom: none; }
+    .info-key {
+      font-family: 'Oswald', sans-serif; font-size: .72rem;
+      letter-spacing: 3px; color: var(--muted); text-transform: uppercase;
+      min-width: 120px; flex-shrink: 0;
+    }
+    .info-val {
+      font-family: 'Rajdhani', sans-serif; font-size: 1rem;
+      color: var(--text); flex: 1;
+    }
+    .info-val.green { color: var(--green); font-family: 'Oswald', sans-serif; letter-spacing: 1px; }
+
+    /* ── Навигация карточки ── */
+    .nav-card {
+      background: var(--panel); border: 1px solid var(--border);
+      padding: 1.2rem 1.4rem; cursor: pointer;
+      transition: border-color .25s, box-shadow .25s;
+      text-decoration: none; display: block; height: 100%;
+      position: relative; overflow: hidden;
+    }
+    .nav-card::before {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+      height: 2px; background: var(--green); transform: scaleX(0);
+      transform-origin: left; transition: transform .25s;
+    }
+    .nav-card:hover { border-color: var(--green); box-shadow: 0 0 14px rgba(0,255,136,.1); }
+    .nav-card:hover::before { transform: scaleX(1); }
+    .nav-card .nc-title {
+      font-family: 'Oswald', sans-serif; color: #fff;
+      letter-spacing: 2px; margin-top: .7rem; font-size: .95rem;
+    }
+    .nav-card .nc-sub {
+      font-size: .78rem; color: var(--muted); margin-top: .3rem;
+    }
+
+    /* ── Empty / error state ── */
+    .state-msg {
+      padding: 2rem; text-align: center;
+      font-family: 'Oswald', sans-serif; letter-spacing: 2px;
+      color: var(--muted); font-size: .85rem;
+    }
+
+    @media (max-width: 576px) {
+      .db-thead, .db-row { grid-template-columns: 1fr 1fr; }
+      .db-thead span:nth-child(3),
+      .db-thead span:nth-child(4),
+      .db-row  span:nth-child(3),
+      .db-row  span:nth-child(4) { display: none; }
+      .profile-tabs { flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body style="background:var(--dark)">
+
+<div class="fixed-decor">ARMED FORCES · CLASSIFIED · ЛИЧНОЕ ДЕЛО</div>
+
+<!-- ══ NAVBAR ══ -->
+<nav class="navbar navbar-expand-lg">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">
+      <img src="img/logo.svg" alt="ARMED FORCES" class="navbar-logo-img">
+    </a>
+    <button class="navbar-toggler border-0" type="button"
+            data-bs-toggle="collapse" data-bs-target="#navMain">
+      <i class="bi bi-list fs-2" style="color:var(--green)"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navMain">
+      <ul class="navbar-nav ms-auto gap-lg-3">
+        <li class="nav-item"><a class="nav-link" href="index.html">Главная</a></li>
+        <li class="nav-item"><a class="nav-link" href="header_/katalog.html">Каталог</a></li>
+        <li class="nav-item"><a class="nav-link active" href="profile.html">
+          <i class="bi bi-person-badge me-1"></i>Профиль</a>
+        </li>
+        <ul id="navAuthArea" class="navbar-nav"></ul>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section class="profile-hero">
+  <div class="container">
+    <div class="d-flex align-items-center gap-4 flex-wrap">
+
+      <!-- Аватар -->
+      <div class="profile-avatar" id="pAvatar">
+        <i class="bi bi-person" style="font-size:2rem"></i>
+      </div>
+
+      <!-- Данные -->
+      <div style="flex:1;min-width:200px">
+        <div class="sec-label" style="margin-bottom:.3rem">
+          <i class="bi bi-folder2-open me-1"></i>// ЛИЧНОЕ ДЕЛО · ОПЕРАТИВНИКА
+        </div>
+        <h1 id="pName" style="
+          font-family:'Oswald',sans-serif; font-size:clamp(1.6rem,4vw,2.4rem);
+          color:#fff; letter-spacing:3px; margin:0 0 .5rem;
+        ">
+          <span class="skel" style="width:220px;height:2rem">&nbsp;</span>
+        </h1>
+        <div class="d-flex align-items-center gap-3 flex-wrap">
+          <span id="pRank" class="rank-badge">
+            <i class="bi bi-award"></i> —
+          </span>
+          <span id="pEmail" style="
+            font-size:.8rem; color:var(--muted);
+            font-family:'Oswald',sans-serif; letter-spacing:1px;
+          ">
+            <i class="bi bi-envelope me-1"></i>—
+          </span>
+          <span id="pId" style="
+            font-size:.7rem; color:var(--border);
+            font-family:'Oswald',sans-serif; letter-spacing:2px;
+          ">ID: —</span>
+        </div>
+      </div>
+
+      <!-- Кнопка выхода -->
+      <div class="ms-auto">
+        <button onclick="doLogout()" class="btn-mil btn-mil-red"
+                style="display:flex;align-items:center;gap:.5rem">
+          <i class="bi bi-box-arrow-right"></i> Выйти
+        </button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ ОСНОВНОЙ КОНТЕНТ ══ -->
+<section class="py-5">
+  <div class="container">
+
+    <!-- Tabs -->
+    <div class="profile-tabs">
+      <button class="profile-tab active" onclick="switchTab('overview')">
+        <i class="bi bi-grid me-1"></i>ОБЗОР
+      </button>
+      <button class="profile-tab" onclick="switchTab('data')">
+        <i class="bi bi-person-lines-fill me-1"></i>ДАННЫЕ
+      </button>
+      <button class="profile-tab" onclick="switchTab('agents')">
+        <i class="bi bi-people me-1"></i>АГЕНТЫ В БД
+      </button>
+      <button class="profile-tab" onclick="switchTab('access')">
+        <i class="bi bi-shield-lock me-1"></i>ДОСТУП
+      </button>
+    </div>
+
+    <!-- ════ TAB: ОБЗОР ════ -->
+    <div id="tab-overview" class="profile-pane active">
+      <div class="row g-4">
+
+        <!-- Статистика -->
+        <div class="col-lg-4">
+          <div class="sec-label mb-2">// статистика из базы</div>
+          <div class="stat-grid">
+            <div class="stat-box">
+              <div class="stat-value" id="statLogins">
+                <span class="skel" style="width:40px;height:2rem">&nbsp;</span>
+              </div>
+              <div class="stat-label">Входов в систему</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="statUsers">
+                <span class="skel" style="width:40px;height:2rem">&nbsp;</span>
+              </div>
+              <div class="stat-label">Агентов в базе</div>
+            </div>
+            <div class="stat-box" style="grid-column:1/-1">
+              <div class="stat-value" id="statDate" style="font-size:1.2rem;letter-spacing:1px">
+                <span class="skel" style="width:140px;height:1.2rem">&nbsp;</span>
+              </div>
+              <div class="stat-label">Дата регистрации</div>
+            </div>
+          </div>
+
+          <!-- Последние входы -->
+          <div class="sec-label mt-4 mb-2">// журнал входов (из БД)</div>
+          <div style="border:1px solid var(--border)">
+            <div id="loginLog" class="state-msg">ЗАГРУЗКА...</div>
+          </div>
+        </div>
+
+        <!-- Быстрый доступ -->
+        <div class="col-lg-8">
+          <div class="sec-label mb-2">// быстрый доступ</div>
+          <div class="row g-3">
+            <div class="col-sm-6">
+              <a href="header_/katalog.html" class="nav-card">
+                <i class="bi bi-grid-3x3-gap fs-2" style="color:var(--green)"></i>
+                <div class="nc-title">КАТАЛОГ ТЕХНИКИ</div>
+                <div class="nc-sub">Танки, авиация, флот →</div>
+              </a>
+            </div>
+            <div class="col-sm-6">
+              <a href="index.html#contact" class="nav-card">
+                <i class="bi bi-headset fs-2" style="color:var(--cyan)"></i>
+                <div class="nc-title">СВЯЗАТЬСЯ С БРОКЕРОМ</div>
+                <div class="nc-sub">Оставить заявку →</div>
+              </a>
+            </div>
+            <div class="col-sm-6">
+              <a href="buy.html" class="nav-card">
+                <i class="bi bi-cart3 fs-2" style="color:var(--green)"></i>
+                <div class="nc-title">КОРЗИНА</div>
+                <div class="nc-sub">Перейти к покупке →</div>
+              </a>
+            </div>
+            <div class="col-sm-6">
+              <a href="index.html#radarSection" class="nav-card">
+                <i class="bi bi-broadcast fs-2" style="color:var(--red)"></i>
+                <div class="nc-title">РАДАР</div>
+                <div class="nc-sub">Мониторинг поставок →</div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ════ TAB: ДАННЫЕ ════ -->
+    <div id="tab-data" class="profile-pane">
+      <div class="row g-4">
+        <div class="col-lg-6">
+          <div class="sec-label mb-2">// данные из sqlite · users</div>
+          <div style="background:var(--panel);border:1px solid var(--border);padding:1.4rem">
+            <div class="info-row">
+              <span class="info-key">ID записи</span>
+              <span class="info-val green" id="dId">—</span>
+            </div>
+            <div class="info-row">
+              <span class="info-key">Позывной</span>
+              <span class="info-val green" id="dCallsign">—</span>
+            </div>
+            <div class="info-row">
+              <span class="info-key">Email</span>
+              <span class="info-val" id="dEmail">—</span>
+            </div>
+            <div class="info-row">
+              <span class="info-key">Звание</span>
+              <span class="info-val" id="dRank">—</span>
+            </div>
+            <div class="info-row">
+              <span class="info-key">Пароль</span>
+              <span class="info-val" id="dPass" style="font-family:monospace;font-size:.8rem;color:var(--muted)">—</span>
+            </div>
+            <div class="info-row">
+              <span class="info-key">Регистрация</span>
+              <span class="info-val" id="dCreated">—</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="sec-label mb-2">// raw запрос к базе</div>
+          <div style="
+            background:#060a0c; border:1px solid var(--border);
+            padding:1.2rem; font-family:monospace; font-size:.78rem;
+            color:var(--green); line-height:1.7; overflow-x:auto;
+          ">
+            <span style="color:var(--muted)">-- SQLite query</span><br>
+            <span style="color:#00ccff">SELECT</span>
+            id, callsign, email, rank,<br>
+            &nbsp;&nbsp;password, created<br>
+            <span style="color:#00ccff">FROM</span> users<br>
+            <span style="color:#00ccff">WHERE</span> id = <span id="rawId" style="color:#f0a500">?</span>;<br><br>
+            <span style="color:var(--muted)">-- login_log query</span><br>
+            <span style="color:#00ccff">SELECT</span> COUNT(*) <span style="color:#00ccff">FROM</span> login_log<br>
+            <span style="color:#00ccff">WHERE</span> user_id = <span id="rawId2" style="color:#f0a500">?</span>;
+          </div>
+          <div class="sec-label mt-3 mb-2">// storage info</div>
+          <div style="background:var(--panel);border:1px solid var(--border);padding:1rem">
+            <div class="info-row" style="padding:.5rem 0">
+              <span class="info-key" style="min-width:100px;font-size:.65rem">LocalStorage</span>
+              <span class="info-val" id="dbSize" style="font-size:.85rem">—</span>
+            </div>
+            <div class="info-row" style="padding:.5rem 0">
+              <span class="info-key" style="min-width:100px;font-size:.65rem">Session</span>
+              <span class="info-val" style="font-size:.85rem;color:var(--green)">АКТИВНА</span>
+            </div>
+            <div class="info-row" style="padding:.5rem 0;border-bottom:none">
+              <span class="info-key" style="min-width:100px;font-size:.65rem">Таблицы</span>
+              <span class="info-val" style="font-size:.85rem">users · login_log</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ════ TAB: АГЕНТЫ ════ -->
+    <div id="tab-agents" class="profile-pane">
+      <div class="sec-label mb-2">// таблица users · sqlite · прямой запрос</div>
+      <div class="db-table">
+        <div class="db-thead">
+          <span>ПОЗЫВНОЙ</span>
+          <span>ЗВАНИЕ</span>
+          <span>EMAIL</span>
+          <span>ДАТА</span>
+        </div>
+        <div class="db-tbody" id="usersTable">
+          <div class="state-msg">ЗАПРОС К БАЗЕ...</div>
+        </div>
+      </div>
+      <div style="
+        margin-top:.6rem; font-family:'Oswald',sans-serif; font-size:.68rem;
+        letter-spacing:2px; color:var(--muted); text-align:right;
+      ">
+        ВСЕГО ЗАПИСЕЙ: <span id="totalCount" style="color:var(--green)">—</span>
+        &nbsp;·&nbsp; EMAIL ЗАМАСКИРОВАНЫ ДЛЯ ЗАЩИТЫ
+      </div>
+    </div>
+
+    <!-- ════ TAB: ДОСТУП ════ -->
+    <div id="tab-access" class="profile-pane">
+      <div class="row g-4">
+        <div class="col-lg-5">
+          <div class="sec-label mb-2">// уровень допуска</div>
+          <div>
+            <div class="access-item open">
+              <i class="bi bi-circle-fill ai-icon" style="color:var(--green);font-size:.5rem"></i>
+              <span class="ai-label">КАТАЛОГ ТЕХНИКИ</span>
+              <span class="ai-badge" style="color:var(--green)">ОТКРЫТ</span>
+            </div>
+            <div class="access-item open">
+              <i class="bi bi-circle-fill ai-icon" style="color:var(--green);font-size:.5rem"></i>
+              <span class="ai-label">ФОРМА ЗАЯВКИ</span>
+              <span class="ai-badge" style="color:var(--green)">ОТКРЫТ</span>
+            </div>
+            <div class="access-item open">
+              <i class="bi bi-circle-fill ai-icon" style="color:var(--green);font-size:.5rem"></i>
+              <span class="ai-label">ПРАЙС-ЛИСТ</span>
+              <span class="ai-badge" style="color:var(--green)">ОТКРЫТ</span>
+            </div>
+            <div class="access-item open">
+              <i class="bi bi-circle-fill ai-icon" style="color:var(--green);font-size:.5rem"></i>
+              <span class="ai-label">ИСТОРИЯ ВХОДОВ</span>
+              <span class="ai-badge" style="color:var(--green)">ОТКРЫТ</span>
+            </div>
+            <div class="access-item locked">
+              <i class="bi bi-lock-fill ai-icon" style="color:var(--red)"></i>
+              <span class="ai-label">СЕКРЕТНЫЕ АРХИВЫ</span>
+              <span class="ai-badge" style="color:var(--red)">ЗАКРЫТ</span>
+            </div>
+            <div class="access-item locked">
+              <i class="bi bi-lock-fill ai-icon" style="color:var(--red)"></i>
+              <span class="ai-label">ЯДЕРНЫЙ АРСЕНАЛ</span>
+              <span class="ai-badge" style="color:var(--red)">ЗАКРЫТ</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-7">
+          <div class="sec-label mb-2">// звание и привилегии</div>
+          <div style="background:var(--panel);border:1px solid var(--border);padding:1.4rem">
+            <div style="
+              font-family:'Oswald',sans-serif; font-size:1.4rem;
+              color:#fff; letter-spacing:2px; margin-bottom:1rem;
+            ">
+              <i class="bi bi-award me-2" style="color:var(--green)"></i>
+              <span id="accessRank">—</span>
+            </div>
+            <div style="
+              font-size:.85rem; color:var(--muted); line-height:1.8;
+              font-family:'Rajdhani',sans-serif;
+            ">
+              Ваш уровень доступа определяется воинским званием, присвоенным при регистрации.
+              Для повышения уровня допуска свяжитесь с администратором через
+              <a href="header_/kontakt.html" style="color:var(--green)">форму контактов</a>.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /container -->
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer class="py-3 text-center" style="border-top:1px solid var(--border)">
+  <span style="font-size:.75rem;color:var(--muted)">
+    &copy; 2024 ARMED FORCES ·
+    <a href="index.html" style="color:var(--green)">Главная</a> ·
+    <span style="color:var(--border)">CLASSIFIED · SQLite/WASM</span>
+  </span>
+</footer>
+
+<!-- ══ SCRIPTS ══ -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.10.2/sql-wasm.js"></script>
+<script src="JS/auth.js"></script>
+<script>
+/* ══════════════════════════════════════════════════════════════
+   PROFILE PAGE — все данные тянутся напрямую из SQLite
+══════════════════════════════════════════════════════════════ */
+
+document.addEventListener('DOMContentLoaded', async () => {
+
+  /* 1. Инициализация БД */
+  await initDB();
+
+  /* 2. Проверка сессии */
+  const sess = getSession();
+  if (!sess) {
+    /* Нет сессии → редирект на главную с открытием модалки */
+    window.location.href = 'index.html';
+    return;
+  }
+
+  /* 3. Обновить navbar */
+  updateNavAuth();
+
+  /* 4. Загрузить ВСЕ данные пользователя прямо из SQLite */
+  await loadProfileFromDB(sess.id, sess.callsign);
+});
+
+/* ─────────────────────────────────────────────────────
+   Главная функция: тянем всё из БД по user ID
+───────────────────────────────────────────────────── */
+async function loadProfileFromDB(userId, callsign) {
+  const db = await initDB();
+
+  /* ── A. Свежие данные пользователя из таблицы users ── */
+  const userRes = db.exec(
+    `SELECT id, callsign, email, rank, password, created
+     FROM users WHERE id = ?`,
+    [userId]
+  );
+
+  if (!userRes.length || !userRes[0].values.length) {
+    /* Пользователь не найден в БД — что-то пошло не так */
+    document.getElementById('pName').innerHTML =
+      `<span style="color:var(--red);font-size:1rem">ОШИБКА: запись не найдена в базе</span>`;
+    return;
+  }
+
+  const [id, dbCallsign, email, rank, passHash, created] = userRes[0].values[0];
+
+  /* ── B. Обновить сессию свежими данными из БД ── */
+  const freshSession = { id, callsign: dbCallsign, email, rank, created };
+  sessionStorage.setItem('af_session', JSON.stringify(freshSession));
+
+  /* ── C. Заполнить HERO ── */
+  const initials = dbCallsign.slice(0, 2);
+  document.getElementById('pAvatar').textContent  = initials;
+  document.getElementById('pName').textContent    = dbCallsign;
+  document.getElementById('pEmail').innerHTML     = `<i class="bi bi-envelope me-1"></i>${email}`;
+  document.getElementById('pRank').innerHTML      = `<i class="bi bi-award"></i> ${rank}`;
+  document.getElementById('pId').textContent      = `ID: ${id}`;
+  document.getElementById('accessRank').textContent = rank;
+
+  /* ── D. Статистика: кол-во входов из login_log ── */
+  const logRes  = db.exec(`SELECT COUNT(*) FROM login_log WHERE user_id = ?`, [userId]);
+  const logins  = logRes[0]?.values[0][0] ?? 0;
+  document.getElementById('statLogins').textContent = logins;
+
+  /* Общее кол-во агентов */
+  const totRes  = db.exec(`SELECT COUNT(*) FROM users`);
+  const total   = totRes[0]?.values[0][0] ?? 0;
+  document.getElementById('statUsers').textContent = total;
+
+  /* Дата регистрации */
+  const dt = new Date(created);
+  document.getElementById('statDate').textContent =
+    dt.toLocaleDateString('ru-RU', { day:'2-digit', month:'long', year:'numeric' });
+
+  /* ── E. Журнал входов (последние 5) ── */
+  const logHistory = db.exec(
+    `SELECT ts FROM login_log WHERE user_id = ? ORDER BY id DESC LIMIT 5`,
+    [userId]
+  );
+  const logEl = document.getElementById('loginLog');
+  if (!logHistory.length || !logHistory[0].values.length) {
+    logEl.innerHTML = `<div class="state-msg">НЕТ ДАННЫХ</div>`;
+  } else {
+    logEl.innerHTML = logHistory[0].values.map(([ts]) => {
+      const d = new Date(ts);
+      return `<div style="
+        display:flex; justify-content:space-between; align-items:center;
+        padding:.5rem .8rem; border-bottom:1px solid var(--border);
+        font-size:.8rem;
+      ">
+        <span style="color:var(--muted);font-family:'Oswald',sans-serif;letter-spacing:1px;font-size:.68rem">
+          <i class="bi bi-arrow-right-circle me-1" style="color:var(--green)"></i>ВХОД
+        </span>
+        <span style="color:var(--text)">${d.toLocaleDateString('ru-RU')} · ${d.toLocaleTimeString('ru-RU',{hour:'2-digit',minute:'2-digit'})}</span>
+      </div>`;
+    }).join('');
+  }
+
+  /* ── F. Данные вкладки "ДАННЫЕ" ── */
+  document.getElementById('dId').textContent       = id;
+  document.getElementById('dCallsign').textContent = dbCallsign;
+  document.getElementById('dEmail').textContent    = email;
+  document.getElementById('dRank').textContent     = rank;
+  document.getElementById('dPass').textContent     =
+    passHash.slice(0,8) + '••••••••' + passHash.slice(-4) + ' [SHA-256]';
+  document.getElementById('rawId').textContent  = id;
+  document.getElementById('rawId2').textContent = id;
+
+  const dt2 = new Date(created);
+  document.getElementById('dCreated').textContent =
+    dt2.toLocaleString('ru-RU', {
+      day:'2-digit', month:'2-digit', year:'numeric',
+      hour:'2-digit', minute:'2-digit', second:'2-digit'
+    });
+
+  /* Размер базы в localStorage */
+  const dbRaw = localStorage.getItem('af_sqlite_db') || '';
+  const sizeKb = (dbRaw.length * .75 / 1024).toFixed(1);
+  document.getElementById('dbSize').textContent = `~${sizeKb} KB`;
+
+  /* ── G. Таблица всех агентов ── */
+  loadAgentsTable(db, dbCallsign);
+}
+
+/* ─────────────────────────────────────────────────────
+   Таблица всех пользователей из DB
+───────────────────────────────────────────────────── */
+function loadAgentsTable(db, myCallsign) {
+  const res = db.exec(
+    `SELECT callsign, rank, email, created FROM users ORDER BY id DESC`
+  );
+  const tbody   = document.getElementById('usersTable');
+  const countEl = document.getElementById('totalCount');
+
+  if (!res.length || !res[0].values.length) {
+    tbody.innerHTML = `<div class="state-msg">БАЗА ПУСТА</div>`;
+    countEl.textContent = '0';
+    return;
+  }
+
+  const rows = res[0].values;
+  countEl.textContent = rows.length;
+
+  tbody.innerHTML = rows.map(([callsign, rank, email, created]) => {
+    const isMe   = callsign === myCallsign;
+    const date   = new Date(created).toLocaleDateString('ru-RU');
+    const masked = email.replace(/(.{2}).+(@.+)/, '$1•••$2');
+
+    return `<div class="db-row ${isMe ? 'is-me' : ''}">
+      <span style="font-family:'Oswald',sans-serif;color:${isMe ? 'var(--green)' : '#fff'};letter-spacing:1px;font-size:.85rem">
+        ${isMe ? '<i class="bi bi-caret-right-fill me-1" style="font-size:.6rem;color:var(--green)"></i>' : ''}${callsign}
+      </span>
+      <span style="color:var(--muted);font-size:.78rem;letter-spacing:.5px">${rank}</span>
+      <span style="color:var(--muted);font-size:.8rem">${masked}</span>
+      <span style="color:var(--muted);font-size:.78rem">${date}</span>
+    </div>`;
+  }).join('');
+}
+
+/* ─────────────────────────────────────────────────────
+   Переключение вкладок
+───────────────────────────────────────────────────── */
+function switchTab(name) {
+  document.querySelectorAll('.profile-pane').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.profile-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+  event.currentTarget.classList.add('active');
+}
+
+/* ─────────────────────────────────────────────────────
+   Выход — очищаем сессию и идём на главную
+───────────────────────────────────────────────────── */
+function doLogout() {
+  sessionStorage.removeItem('af_session');
+  window.location.href = 'index.html';
+}
+</script>
+</body>
+</html>
